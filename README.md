@@ -1,8 +1,13 @@
 # handy-dandy-haskell
 
-When I'm coding in any language, some things just annoy me. Then I make a library which adrresses those lacks. It wont go down in history but it will go down on my code. The functions concern lists, association lists and Strings.
 
-like:
+
+When I'm coding in any language, some things just annoy me. Then I make a library which adrresses those lacks. It wont go down in history but it will go down on my code. The functions concern lists, association lists and Strings.
+3 Questions
+I was thinking to myself: how can you ask someone a question about his work on Github. and realised there is no button for that. But I wish there was. any questions: timwaagh@gmail.com or add on fb facebook.com/Tim.Zwart87
+
+
+#functions
 
 !!! a replacement for !! giving a more detailed error message.
 
@@ -15,5 +20,7 @@ replace functions for lists and alists
 something to convert a list to a 2-tuple
 
 parse-to-alist functions for CSV and a single level of depth JSON object
+
+
 
 and last-but-not-least a map variant which also feeds the current index as you traverse the list. 
