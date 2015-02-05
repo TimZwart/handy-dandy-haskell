@@ -1,4 +1,4 @@
-module HandyDandy.Handydandy (map_with_index, splitLines, lookUp, has_number_of_elements,(!!!),replace, replace_assoc,list_to_2tuple) where
+module HandyDandy.Handydandy (map_with_index, splitLines, lookUp, has_number_of_elements,(!!!),replace, replace_assoc,list_to_2tuple, csv_to_assoc_list, splitOnNonQuoted, json_object_to_alist) where
 
 import Data.Maybe
 import Data.List
@@ -56,3 +56,24 @@ replace_assoc key new assoc = replace elem (key, new) assoc
  
 list_to_2tuple :: [a]->(a,a)
 list_to_2tuple xs = (xs!!0,xs!!1)
+
+csv_to_assoc_list :: String -> [[(String,String)]]
+csv_to_assoc_list rawCSV = map (zip firstLineList) restLineLists
+    where lineCSV = splitLines (filter (/='"') rawCSV)
+          restLineLists = map splitKom (tail lineCSV)
+          firstLineList = splitKom (head lineCSV)
+
+json_object_to_alist :: String -> [(String,String)]
+json_object_to_alist rawJSONobject = map (list_to_2tuple . (map (filter (/='\"'))) . (splitOnNonQuoted ':')) (splitKom (filter notabrace rawJSONobject))
+    where notabrace char = char /= '{' && char /= '}'
+
+splitOnNonQuoted char str = splitter str [] "" False 
+  where splitter (curr:rest) luc currs_uc quoted
+         |curr=='\"'    = splitter rest luc (curr:currs_uc) (not quoted)
+         |curr==char    =  if not quoted
+                           then splitter rest ((reverse currs_uc):luc) "" quoted
+                           else splitter rest luc (curr:currs_uc) quoted
+         |otherwise     = splitter rest luc (curr:currs_uc) quoted
+        splitter [] list laststring quoted = reverse ((reverse laststring):list)
+
+
