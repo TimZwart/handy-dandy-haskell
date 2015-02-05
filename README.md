@@ -1,6 +1,6 @@
 # handy-dandy-haskell
 
-this is a teeny ugly little library holding functions I consider useful. It wont go down in history but it will go down on my code. And if it gets useful enough, perhaps on yours too.
+When I'm coding in any language, some things just annoy me. Then I make a library which adrresses those lacks. It wont go down in history but it will go down on my code. The functions concern lists, association lists and Strings.
 
 like:
 
@@ -13,5 +13,7 @@ something which checks whether a list has a certain number of elements (so you d
 replace functions for lists and alists
 
 something to convert a list to a 2-tuple
+
+parse-to-alist functions for CSV and a single level of depth JSON object
 
 and last-but-not-least a map variant which also feeds the current index as you traverse the list. 
